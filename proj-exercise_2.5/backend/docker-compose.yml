@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  backend:
+    build: .
+    image: backend
+    ports:
+      - 8000:8000
+    container_name: backend
+    environment:
+      #- FRONT_URL=http://192.168.18.29:5000
+      - FRONT_URL=http://192.168.18.29:5000
+      - REDIS=192.168.137.166
+      - REDIS_PORT=7000
+
+  redis_6.2-rc2:
+    image: redis:6.2-rc2
+    ports:
+      - 7000:6379
+    container_name: redis_6.2-rc2

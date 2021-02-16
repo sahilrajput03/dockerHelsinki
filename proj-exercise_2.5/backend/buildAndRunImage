@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -t ex1.11 . && winpty docker run -p 8000:8000 -it --rm ex1.11

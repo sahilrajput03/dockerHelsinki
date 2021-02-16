@@ -1,0 +1,48 @@
+version: "3.2"
+services:
+  backend:
+    build: ./backend
+    image: backend
+    ports:
+      - 8000:8000
+    container_name: backendContainer
+    environment:
+      - FRONT_URL=http://192.168.137.164:5000
+      - REDIS=192.168.137.164
+      - REDIS_PORT=7000
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_NAME=postgres
+      - DB_HOST=postgressdbservice
+    #      - DB_HOST=<hostname> defaults to "localhost" if not set.
+    depends_on:
+      - postgressdbservice
+
+  postgressdbservice:
+    # service name is also the hostname by default for a container, although you can also assign a hostname to container specifically too.
+    image: postgres
+    restart: unless-stopped
+    # This specifies that with running `docker-compose up` after first time will not reboot this container, yikes!!
+    environment:
+      - POSTGRES_PASSWORD=example
+    container_name: postgresContainerEx2.6
+    volumes:
+      - ex2.6database:/var/lib/postgresql/data
+
+  redis_6.2-rc2:
+    image: redis:6.2-rc2
+    ports:
+      - 7000:6379
+    container_name: redis_6.2-rc2
+
+  frontend:
+    image: frontend
+    build: ./frontend
+    environment:
+      - API_URL=http://192.168.137.164:8000
+    ports:
+      - 5000:5000
+
+volumes:
+  ex2.6database:
+# You can't use a volume inside docker-compose file, unless you specify it under `volumes` section.

@@ -1,0 +1,66 @@
+version: "3.2"
+services:
+  backend:
+    build: ./backend
+    image: backend
+    ports:
+      - 8000:8000
+    container_name: backendContainer
+    environment:
+      - FRONT_URL=http://192.168.137.166:5000
+      - REDIS=192.168.137.166
+      - REDIS_PORT=7000
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=example
+      - DB_NAME=postgres
+      - DB_HOST=postgressdbservice
+    #      - DB_HOST=<hostname> defaults to "localhost" if not set.
+    depends_on:
+      - postgressdbservice
+
+  proxy:
+    image: jwilder/nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    container_name: nginx-proxy
+
+  postgressdbservice:
+    # service name is also the hostname by default for a container, although you can also assign a hostname to container specifically too.
+    image: mypostgres
+    # restart: unless-stopped
+    # ^^ This specifies that with running `docker-compose up` after first time will not reboot this container, yikes!!
+    environment:
+      - POSTGRES_PASSWORD=example
+      - PGDATA=/var/lib/postgresql/data
+      # Default value of PGDATA is `/var/lib/postgresql/data`
+      # Above is the place where postgres will save database files.
+    container_name: postgresContainerEx2.8
+    volumes:
+      - databaseVol:/var/lib/postgresql/data
+      # Couln't able to local host bind with container, coz postgres img tries to chown the folder and which is not possible with windows mounted directory. :(
+
+  redis_6.2:
+    image: redis:6
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - 7000:6379
+    container_name: redis6.2
+    # volumes:
+    #   - ./_dbRedis:/data
+    # - ./_dbRedis/dump.rdb:/data/dump.rdb
+
+  frontend:
+    image: frontend
+    build: ./frontend
+    container_name: frontendContainerEx2.8
+    # environment:
+    # - API_URL=http://192.168.137.166:8000
+    # We don't need above env variable, coz we want frontend to directly query to same origin i.e., @port 80, so requests get through nginx-proxy server! yikes!
+    ports:
+      - 5000:5000
+volumes:
+  databaseVol:
+# You can't use a volume inside docker-compose file, unless you specify it under `volumes` section.

@@ -1,0 +1,2 @@
+#!/bin/bash
+naked FRONT_URL=http://localhost:5000 ys

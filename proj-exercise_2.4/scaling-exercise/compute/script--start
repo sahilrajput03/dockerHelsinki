@@ -1,0 +1,2 @@
+#!/bin/bash
+naked "VIRTUAL_HOST=compute.localtest.me yarn start"

@@ -1,0 +1,22 @@
+jobs:
+  deploy:
+    executor: heroku/default
+    environment:
+    # - HEROKU_APP_NAME=circleci-heroku1
+    # - HEROKU_API_KEY=11738b6a-ef50-4377-a00e-e7a2776412b1
+
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+      command: |
+      echo "The command above installs Heroku, the command below deploys.
+      What you do inbetween is up to you!"
+      - heroku/deploy-via-git
+orbs:
+  heroku: circleci/heroku@1.2.4
+version: 2.1
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy

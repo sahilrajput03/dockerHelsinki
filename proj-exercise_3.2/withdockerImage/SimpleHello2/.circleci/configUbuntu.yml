@@ -1,0 +1,33 @@
+# This config works all good too!
+# https://github.com/CircleCI-Public/cimg-base (well docs)
+# cimg/base:2020.01 is an Ubuntu Docker image created by CircleCI with continuous integration builds in mind.
+version: 2.1
+
+jobs:
+  myDeployHerokuContainerJOB:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          command: |
+            echo "My messag1"
+            echo "My message2"
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            heroku container:login
+            heroku container:push -a $HEROKU_APP_NAME web
+            heroku container:release -a $HEROKU_APP_NAME web
+
+workflows:
+  myDeployWORKFLOW:
+    jobs:
+      - myDeployHerokuContainerJOB
+# LEARN: Required environment variables:
+# HEROKU_API_KEY
+# HEROKU_APP_NAME
+
+# LEARN:
+# - checkout step is there for all configs
+# - image: node:current-alpine

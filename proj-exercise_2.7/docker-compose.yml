@@ -1,0 +1,35 @@
+version: "3.2"
+
+services:
+  backend:
+    build: ./backend-2.7
+    image: mlbackend
+    container_name: mlbackendContainer
+    volumes:
+      - modelDataVolm:/src/model
+    ports:
+      - 5000:5000
+
+  frontend:
+    build: ./frontend-2.7
+    image: mlfrontend
+    container_name: mlfrontend
+    ports:
+      - 3000:3000
+
+  training:
+    build: ./training-2.7
+    image: mltraining
+    restart: unless-stopped
+    container_name: mltrainingContainer
+    volumes:
+      - modelDataVolm:/src/model
+      - images:/src/imgs
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 3G
+
+volumes:
+  modelDataVolm:
+  images:

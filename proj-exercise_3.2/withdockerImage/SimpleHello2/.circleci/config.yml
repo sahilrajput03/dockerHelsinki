@@ -1,0 +1,30 @@
+# This config works all good!
+jobs:
+  myDeployJOB:
+    executor: heroku/default
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - heroku/install
+      - run:
+          command: |
+            echo "My messag1"
+            echo "My message2"
+      - heroku/push-docker-image:
+          app-name: $HEROKU_APP_NAME
+          process-types: web
+      - heroku/release-docker-image:
+          app-name: $HEROKU_APP_NAME
+          process-types: web
+
+orbs:
+  heroku: circleci/heroku@1.2.5
+version: 2.1
+workflows:
+  myHerokuDeployWORKFLOW:
+    jobs:
+      - myDeployJOB
+# LEARN: Required environment variables:
+# HEROKU_API_KEY
+# HEROKU_APP_NAME

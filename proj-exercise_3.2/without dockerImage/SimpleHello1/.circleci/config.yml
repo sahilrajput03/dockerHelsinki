@@ -1,0 +1,19 @@
+jobs:
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: |
+            echo "My messag1"
+            echo "My message2"
+      - heroku/deploy-via-git
+
+orbs:
+  heroku: circleci/heroku@1.2.4
+version: 2.1
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy

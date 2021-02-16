@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  ex.2.3-frontend-service:
+    image: ex.2.3-frontend
+    build: ./frontend-example-docker
+    container_name: ex.2.3-frontend
+    ports:
+      - 5000:5000
+    environment:
+      - API_URL=http://192.168.137.90:8000
+
+  ex.2.3-backend-service:
+    image: ex.2.3-backend
+    build: ./backend-example-docker
+    container_name: ex.2.3-backend
+    environment:
+      - FRONT_URL=http://192.168.137.90:5000
+    ports:
+      - 8000:8000

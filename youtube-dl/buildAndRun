@@ -1,0 +1,3 @@
+#!/bin/bash
+docker build -t youtube-dl .
+winpty docker run youtube-dl https://imgur.com/JY5tHqr

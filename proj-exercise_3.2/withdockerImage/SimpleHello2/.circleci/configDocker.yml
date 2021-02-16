@@ -1,0 +1,34 @@
+# This config works all good too!
+version: 2.1
+
+jobs:
+  myDeployHerokuContainerJOB:
+    executor:
+      name: docker/docker
+      tag: "3.6"
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      # - docker/install-docker-tools
+      - run:
+          command: |
+            echo "My messag1"
+            echo "My message2"
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            heroku container:login
+            heroku container:push -a $HEROKU_APP_NAME web
+            heroku container:release -a $HEROKU_APP_NAME web
+
+orbs:
+  docker: circleci/docker@1.5.0
+
+workflows:
+  myDeployWORKFLOW:
+    jobs:
+      - myDeployHerokuContainerJOB
+# LEARN: Required environment variables:
+# HEROKU_API_KEY
+# HEROKU_APP_NAME
+
+#LEARN: I guess checkout is optional as read from official.
