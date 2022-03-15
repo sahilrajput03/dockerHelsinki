@@ -654,7 +654,9 @@ SECURITY WARNING: You are building a Docker image from Windows against a non-Win
 
 - `docker diff container-id` TO GET THE DIFFERENCES BETWEEN THE CONTAINER AND IMAGE FROM IT IS CREATED. The character in front of the file name indicates the type of the change in the container’s filesystem: A = added, D = deleted, C = changed.
 
-- change docker image name via `docker tag image-id-here <my-new-image-name-here>`
+- `docker image` command can be used to a copy of image with different name via `docker tag image-id-here <my-new-image-name-here>`
+- `docker image` command can be used to a copy of image with different tag as well. ![image](https://user-images.githubusercontent.com/31458531/158404713-6ab8fbb8-e4bf-43c2-8285-ba0b82209518.png)
+
 
 - SET NAME OF IMAGE AT build time of image i.e, `docker build -t <myImageName> .`.
 
@@ -901,7 +903,10 @@ hello-world:latest
 
 "$docker kill container-id-here" To kill a container.
 
-Tutorials point seems awesome for bash - Link - https://www.tutorialspoint.com/docker/docker_managing_ports.htm#:~:text=Advertisements,number%20of%20the%20Docker%20host.
+Tutorials point seems awesome for bash - Link - 
+
+```bash
+https://www.tutorialspoint.com/docker/docker_managing_ports.htm#:~:text=Advertisements,number%20of%20the%20Docker%20host.
 Below command build the image, and we need to rebuild the image if we ever change the Dockerfile. Building docker image would result in copying our project content to docker image which is locally present, but its not running currently. Build image is like static maching that is off, and image becomes container when it changes state from being static to running.
 "$ docker build . -t podcast"
 "$docker run --restart always -p EXTERNAL:INTERNAL sahilrajput03/podcast-classical:v1.0.0" #(USE - 8899/docker_host_port/External port/LOCAL_PORT(is what we will use actually to access the service)     :        port_on_that_app_runs/docker_container_port(or simply CONTAINER_PORT)/Internal port.
@@ -925,8 +930,9 @@ LEARNING node(kent c dodds): setTimeout(() => {
 	log("Exiting program.!!!")
 	process.exit(1)
 },5000)
+```
 
-
+```dockerfile
 FROM node:alpine
 COPY . /usr/src
 # VOLUME /Users/kentcdodds/Library/OpenAudible/mp3 /urs/mp3s #THIS WOULD NEVER WORK(BUT would definitely work with cli way. :D) AS DOCKER DOES'T ALLOW THIS..(that is just mounting, NOT ACTUALLY COPYING OVER THING.).
@@ -942,7 +948,7 @@ CMD ["node", "."] #This line is just same as "RUN node ." but it'll let us liste
 #Also, CMD is a daemon that doesn't take normal parameters to make it run, but it takes array of strings.
 EXPOSE 8765 # This port is actually the port on which my app is running(*INTERNAL*), and we'll let the consumer of the docker image(we would build) to be able to control at what port to run the service of the docker file.
 #Here podcast is the name of the locally saved app.
-
+```
 
 expo - splash screen error => This issue is closed (but problem isn't resolved, see the other issue)=>  https://github.com/expo/expo/issues/10263 , https://github.com/expo/expo/issues/8995 .
 
