@@ -581,6 +581,8 @@ $ docker-compose push
 
 	`docker run -d --name webserver -p 80:80 -v ~/www/:/home/site/www/ -v ~/docker/share/apache_logs/:/home/site/logs -v ~/.gitconfig:/home/site/.gitconfig ...`
 
+Here `-p 80:80` means `-p host_port:container_port`.
+
 - If you want to make a [read only](https://docs.docker.com/storage/bind-mounts/#use-a-read-only-bind-mount) bind mount, you can use 
 
 	`docker run -d -it --name devtest -v "$(pwd)"/target:/app:ro nginx:latest`
@@ -826,6 +828,8 @@ docker kill @ Docs @ https://docs.docker.com/engine/reference/commandline/contai
 `docker build . -t hello-world`
 
 `docker run -p 8888:3000 hello-world`
+
+Here `-p 8888:3000` means `-p host_port:container_port`.
 
 `docker ps` #ps stands for "Process Status" #Returns the currently running containers.
 
