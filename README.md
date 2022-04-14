@@ -1,5 +1,11 @@
 ***Don't delte the gist coz all below content is copied from gist@https://gist.github.com/sahilrajput03/1d8116364ac51810b3c54a9a6788be65 and the image data are linked to that gist only and will be lost on deletion of that gist.***
 
+## Can i put `dockerignore`and `ockerfile` itself in `dockerignore` file?
+
+Yes, Source: [Click here](https://stackoverflow.com/a/47580591/10012446).
+
+https://stackoverflow.com/a/47580591/10012446
+
 #### Limiting hardware usages by contaniers:
 
 https://docs.docker.com/config/containers/resource_constraints/
