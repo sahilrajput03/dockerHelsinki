@@ -4,8 +4,6 @@
 
 Yes, Source: [Click here](https://stackoverflow.com/a/47580591/10012446).
 
-https://stackoverflow.com/a/47580591/10012446
-
 #### Limiting hardware usages by contaniers:
 
 https://docs.docker.com/config/containers/resource_constraints/
