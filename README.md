@@ -8,23 +8,14 @@ New Doc for Docker Notes: [Click here](https://docs.google.com/document/d/1DoMy3
 
 #### Final links
 
-- **Pre build images** in circleci , image for minimum ubuntu.
-- https://circleci.com/docs/2.0/circleci-images/ 
-- **Running docker commands**:(Must read for you!!){got the missing piece from here.., i.e., `setup_remote_docker}
-  - https://circleci.com/docs/2.0/building-docker-images/ (add to docker course)
-  - Suppor issue that opened the eyes. [>>Link here](https://support.circleci.com/hc/en-us/articles/115015849028-Docker-Daemon-Not-Available#:~:text=If%20you%20receive%20the%20following,%2Frun%2Fdocker.sock.&text=This%20typically%20indicates%20that%20you,command%20without%20using%20remote%20docker.).
 - Docker references:
 
-  - https://circleci.com/developer/orbs/orb/circleci/docker
-- Well post @ [medium](https://medium.com/nexton/deploying-docker-images-to-heroku-with-circleci-713c764e248d#:~:text=CircleCI%20is%20a%20CI%2FCD,will%20detect%20your%20GitHub%20projects.). (add to devops material) What not to look at ?([circleci/heroku@1.2.4 ORB that didn't work for me though](https://circleci.com/developer/orbs/orb/circleci/heroku#jobs-push-docker-image))
 - https://circleci.com/docs/2.0/sample-config/ - Sample configs from docker.
 
 ```yml
 image: cimg/base:2020.01
 #source is the same above link.
 ```
-
-
 
 ```bash
 sudo curl https://cli-assets.heroku.com/install.sh | sh
@@ -46,8 +37,6 @@ workflows:
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'
 ```
-
-
 
 #### Tip for using bash and some online script
 
@@ -112,7 +101,6 @@ Docker orbs - [@Docs](https://circleci.com/developer/orbs/orb/circleci/docker)
 passwd: mypasssword
 login: mylogin
 ```
-
  
 
 ```bash
