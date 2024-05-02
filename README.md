@@ -6,38 +6,6 @@ New Doc for Docker Notes: [Click here](https://docs.google.com/document/d/1DoMy3
 
 ## From My Gist
 
-#### Final links
-
-- Docker references:
-
-- https://circleci.com/docs/2.0/sample-config/ - Sample configs from docker.
-
-```yml
-image: cimg/base:2020.01
-#source is the same above link.
-```
-
-```bash
-sudo curl https://cli-assets.heroku.com/install.sh | sh
-HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a python-django-starter web
-HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a python-django-starter web
-#I don't need env for each line ,, though bad practise.!!
-```
-
-```yml
-# First .circle/config.yml successful(src: devopsdocker, yikes)
-version: 2.1
-orbs:
-  docker: circleci/docker@1.0.0
-workflows:
-  deploy:
-    jobs:
-      - docker/publish:
-          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
-          tag: 'latest'
-```
-
 #### Tip for using bash and some online script
 
 - `sudo curl https://cli-assets.heroku.com/install.sh | sh`
@@ -101,6 +69,7 @@ Docker orbs - [@Docs](https://circleci.com/developer/orbs/orb/circleci/docker)
 passwd: mypasssword
 login: mylogin
 ```
+
  
 
 ```bash
