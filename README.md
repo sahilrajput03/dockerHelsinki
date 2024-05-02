@@ -1,102 +1,12 @@
-***Don't delte the gist coz all below content is copied from gist@https://gist.github.com/sahilrajput03/1d8116364ac51810b3c54a9a6788be65 and the image data are linked to that gist only and will be lost on deletion of that gist.***
+# Learn Docker
 
-## What is `FROM scratch` in a docker file?
+New Doc for Docker Notes: [Click here](https://docs.google.com/document/d/1DoMy3o9K5IWfnOpSyQ4hRb8C4meFS4Ic_AQkpWfoWak/edit)
 
-Checkout at : https://hub.docker.com/_/scratch
+## 912 lines pending...
 
-Inspiration: https://github.com/kubernetes-hy/material-example/blob/master/4-gitops/app/Dockerfile
-
-## Can i put `dockerignore`and `dockerfile` itself in `dockerignore` file?
-
-Yes, Source: [Click here](https://stackoverflow.com/a/47580591/10012446).
-
-#### Limiting hardware usages by contaniers:
-
-https://docs.docker.com/config/containers/resource_constraints/
+## From My Gist
 
 #### Final links
-
-- https://docs.docker.com/engine/swarm/
-- [diff b/w swarm and swarm mode](https://stackoverflow.com/questions/40039031/what-is-the-difference-between-docker-swarm-and-swarm-mode)
-- https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-- https://k3s.io/
-- https://github.com/rancher/k3d
-- Amazing -> https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-- Kubernetes Glossary - [Link](https://kubernetes.io/docs/reference/glossary/?fundamental=true)
-- Kubernets Diagrams - [Link](https://tsuyoshiushio.medium.com/kubernetes-in-three-diagrams-6aba8432541c)
-
-#### Import variables from a .env file via command:
-
-```bash
-source .env
-# or equivalent command.
-. ./conf/prac1
-```
-
-[src](https://stackoverflow.com/a/19331521)
-
-#### chown a folder to a user
-
-```bash
-chown -R app /app
-#here, /app directory will be owned ny app user. Use $USER variable if current user is not know before hand in scripts.
-```
-
-[src for chown](https://askubuntu.com/questions/6723/change-folder-permissions-and-ownership)
-
-#### Using -k for unsecured things via curl
-
-[stackoverflow answer](https://stackoverflow.com/a/24618403)
-
-#### Docker-engine release page
-
-https://docs.docker.com/engine/release-notes/
-
-#### Alpine pks here
-
-https://pkgs.alpinelinux.org/packages
-
-
-
-```bash
-# Hello World Program in Bash Shell
-
-export DOCKER_HOST=tcp://192.168.137.164:2376
-
-echo ${DOCKER_HOST%?????} #removing last 5 chars.
-
-echo ${DOCKER_HOST:6} #Removing first 6 chars.
-
-echo clear
-export a=${DOCKER_HOST%?????}
-export b=${a:6}
-echo $b
-#output:
-Hello World!
-tcp://192.168.137.164
-192.168.137.164:2376
-clear
-192.168.137.164
-
-
-###########solution below
-export DOCKER_HOST=tcp://192.168.137.164:2376
-
-echo ${DOCKER_HOST:6:15}
-
-#Output:
-192.168.137.164
-```
-
-[src - substring bash](https://stackabuse.com/substrings-in-bash/)
-
-Run a single service:
-
-```bash
-$ docker-compose run youtube-dl https://imgur.com/JY5tHqr
-```
-
-
 
 - **Pre build images** in circleci , image for minimum ubuntu.
 - https://circleci.com/docs/2.0/circleci-images/ 
@@ -479,8 +389,6 @@ $ curl whoami.colasloth.com
 ```bash
 $ docker-compose port --index 1 whoami 8000
 ```
-
-
 
 #### `command help`
 
