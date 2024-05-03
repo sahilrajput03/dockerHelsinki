@@ -2,93 +2,7 @@
 
 New Doc for Docker Notes: [Click here](https://docs.google.com/document/d/1DoMy3o9K5IWfnOpSyQ4hRb8C4meFS4Ic_AQkpWfoWak/edit)
 
-## 912 lines pending...
-
-## From My Gist
-
-#### Tip for using bash and some online script
-
-- `sudo curl https://cli-assets.heroku.com/install.sh | sh`
-
-#### What do you need to setup @ app.circleci.com
-
-- Click on Projects and click on the desired project's **Set Up Project** link.
-- Then choose **Use existing config** and then setup this.
-
-#### Little git tip
-
-- If you would have specified
-
-  ```
-  git push origin master:my_work
-  ```
-
-  then you would have pushed your local `master` to `origin/my_work`. If you don't use the `:my_work` part, then the destination defaults to the same branch as given as source.
-
-#### Heroku deployment with circleci links with-
-
-- [Link1](https://circleci.com/docs/2.0/deployment-integrations/#heroku),
-
-- [Link2](https://circleci.com/developer/orbs/orb/circleci/heroku)
-
-- FYI: You can't run a bash file by direclty specifying in start script of package.json file in heroku dyanos. :( But you can surely login with bash to see your files and edit them, yikes with command : `heroku run bash --app circleci-heroku1`
-
-- You can get logs from any path via command: `heroku logs --app=circleci-heroku1`.
-
-- Add remote to existing app: `heroku git:remote -a my-app-name`
-
-- For circle ci config.yml to work, set environment variable from **Project setttings**, 
-
-  HEROKU_API_KEY=??
-
-  HEROKU_APP_NAME=??
-
-- Logout from heroku cli- `heroku logout`
-
-- `heroku apps` gives you list of current apps.
-
-- `heroku open --app=appName` will open your app in browser.
-
-#### My `.circle/config.yml`file contents:
-
-```yml
-version: 2.1
-orbs:
-  docker: circleci/docker@1.0.0
-workflows:
-  deploy:
-    jobs:
-      - docker/publish:
-          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
-          tag: 'latest'
-```
-
-Docker orbs - [@Docs](https://circleci.com/developer/orbs/orb/circleci/docker)
-
-```
-passwd: mypasssword
-login: mylogin
-```
-
- 
-
-```bash
-$ docker run -it ubuntu bash
-#Testing if docker is installed correctly.
-$ docker run hello-world
-```
-
-Installing docker on ubuntu [easiest way from Docker docs](https://docs.docker.com/engine/install/ubuntu/#install-from-a-package)!
-
-[Change redis db location](https://stackoverflow.com/questions/43012964/change-redis-db-location#:~:text=You%20can%20do%20it%20by,will%20use%20the%20new%20path.)
-
-[Copy command in Dockerfile](https://docs.docker.com/engine/reference/builder/#copy)
-
-#### Manipulation with environment variable
-
-- [docker-compose.yml Docs Reference(Environment variables in Compose)](https://docs.docker.com/compose/environment-variables/)
-- [Dockerfile - Docs Reference - Environment replacement](https://docs.docker.com/engine/reference/builder/#environment-replacement)
-- [ENV in Dockerfile - Docs Reference](https://docs.docker.com/engine/reference/builder/#env)
+## 912 lines pending... - start from here.......
 
 #### Learning bash
 
@@ -140,8 +54,6 @@ $ docker-machine env manager1#Execute those commands to set the user env direclt
 #for e.g., (set doens't set for user variable but for current session only in cmdprompt, but setx does it for user variables yikes!!)
 $ SETX DOCKER_HOST tcp://192.168.137.106:2376
 ```
-
-
 
 Done with private dns software : Dns's [link1](http://www.thekelleys.org.uk/dnsmasq/doc.html), [link2](https://github.com/coredns/coredns).
 
