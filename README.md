@@ -6,15 +6,6 @@
 
 ## 912 lines pending... - start from here.......
 
-## What does `-it` in docker commands? (Claude)
-
-In Docker, the `-it` flag is a combination of two separate flags that are commonly used together when running containers interactively:
-
-- `-i` (interactive): Keeps STDIN open even if not attached, allowing you to interact with the container
-- `-t` (tty): Allocates a pseudo-TTY, essentially simulating a terminal
-
-When combined as `-it`, this allows you to interact with the container in an interactive shell
-
 #### Learning bash
 
 [src](https://stackoverflow.com/questions/5750450/how-can-i-print-each-command-before-executing)
