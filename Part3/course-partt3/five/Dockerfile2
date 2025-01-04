@@ -1,0 +1,17 @@
+FROM ruby as build-stage
+
+WORKDIR /usr/app
+
+RUN gem install jekyll
+RUN jekyll new .
+RUN echo "gem 'csv'" >> Gemfile
+RUN echo "gem 'base64'" >> Gemfile
+RUN bundle install
+RUN jekyll build
+
+FROM nginx
+
+COPY --from=build-stage /usr/app/_site/ /usr/share/nginx/html
+
+# For debugging
+# CMD /bin/sh
