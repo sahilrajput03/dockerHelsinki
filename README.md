@@ -251,10 +251,6 @@ $ curl whoami.colasloth.com
   I'm 740dc0de1954 
 ```
 
-
-
-- Amazing new style dockerfile with multiple FROM commands, yikes!! @ [Link, src: FSO](https://github.com/jwilder/whoami/blob/master/Dockerfile#L9)
-
 ### commands
 
 ```bash
