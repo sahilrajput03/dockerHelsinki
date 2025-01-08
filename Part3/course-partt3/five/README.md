@@ -2,7 +2,7 @@
 
 Tags: `#multi stage build`
 
-Source: [Click here](https://devopswithdocker.com/part-3/section-4#multi-stage-builds)
+Devops Topic Source: [Click here](https://devopswithdocker.com/part-3/section-4#multi-stage-builds)
 
 **From course material:** _As you can see, even though our Jekyll image needed Ruby during the build stage, it is considerably smaller since it only has Nginx and the static files in the resulting image._
 
@@ -17,3 +17,8 @@ docker image ls | grep jekyll
 # jekyll-img1 latest f05c533e443c 7 minutes ago 1.08GB
 # jekyll-img2 latest e0319c7f6f0c 2 minutes ago 192MB
 ```
+
+# More multi-stage build usage in this github repository
+
+- file://./../../../samples/my-todo-app/backend/Dockerfile
+- file://./../../../samples/my-todo-app/frontend/Dockerfile
